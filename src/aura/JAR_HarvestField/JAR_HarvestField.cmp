@@ -1,3 +1,19 @@
-<aura:component >
-	
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    
+    <!-- ************** Attributes ************** -->
+
+    <!-- ************** Handlers ************** -->
+    
+    <!-- ************** Data Service ************** -->
+
+    <!-- ************** Body ************** -->
+    
+    <lightning:card>
+
+        <aura:set attribute="title">
+            <lightning:icon iconName="!custom:custom5" /> Harvest Field Name
+        </aura:set>
+
+    </lightning:card>
+
 </aura:component>
