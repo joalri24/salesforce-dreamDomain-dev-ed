@@ -1,5 +1,9 @@
 ({
-	myAction : function(component, event, helper) {
+	recordUpdatedHandler : function(component, event, helper) {
+		
+	},
+	
+	onInit: function(component, event, helper){
 		
 	}
 })

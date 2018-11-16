@@ -1,17 +1,28 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" >
     
     <!-- ************** Attributes ************** -->
+    <aura:attribute name="recordId" type="Id" default="a031U000001JHCFQA4"/>
+    <aura:attribute name="harvestField" type="Harvest_Field__c"/>
+
 
     <!-- ************** Handlers ************** -->
-    
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
     <!-- ************** Data Service ************** -->
 
-    <!-- ************** Body ************** -->
-    
+    <force:recordData aura:id="service"
+        recordId="{!v.recordId}"
+        targetFields="{!v.harvestField}"
+        mode="EDIT"
+        fields="['Id', 'Name', 'Crop__c', 'Size__c', 'Status__c', 'Yield__c', 'Map_Id__c', 'Irrigation__c', 'Picture_URL__c']"
+        recordUpdated="{!c.recordUpdatedHandler}"/>
+
+
+    <!-- ************** Body ************** -->  
     <lightning:card>
 
         <aura:set attribute="title">
-            <lightning:icon iconName="!custom:custom5" /> Harvest Field Name
+            <lightning:icon iconName="!custom:custom5" /> {!v.harvestField.Name}
         </aura:set>
 
     </lightning:card>
