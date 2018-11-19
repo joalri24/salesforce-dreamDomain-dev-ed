@@ -1,0 +1,46 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="JAR_HarvestFieldController">
+    
+    <!-- ************** Attributes ************** -->
+    <aura:attribute name="height" type="String" default="700px" access="global"/>
+    <aura:attribute name="tableData" type="Object[]" default="[]"/>
+    <aura:attribute name="treeData" type="Object"/>
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="viewMode" type="String" default="tree" access="global"/>
+
+    
+    <!-- ************** Event Handlers ************** -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    
+    <!-- ************** Registered events ************** -->
+    <aura:registerEvent name="selectSObject" type="ltng:selectSObject" />
+    
+    
+    <!-- ************** Body ************** -->
+    <div>
+        <div class="content" style="{! 'height:'+ v.height}" >
+            
+            <div class="list-wrapper">
+                <aura:if isTrue="{! equals(v.viewMode, 'table')}">
+                    <lightning:datatable class="table" data="{!v.tableData}" columns="{!v.columns}" keyField="id" onrowselection="{!v.onRowSelection}"/>
+                </aura:if>
+
+                <aura:if isTrue="{! equals(v.viewMode, 'tree')}">
+                    <lightning:tree items="{!v.treeData}" header="Fields" onselect="{!c.onTreeItemSelected}" />
+                </aura:if>
+
+                <lightning:input class="slds-hide" aura:id="map" label="Map goes here!" value="map" placeholder="is here..."/>
+
+                <lightning:buttonGroup>
+                    <lightning:buttonIcon iconName="utility:right_align_text" onclick="{!c.onTreeView}" />
+                    <lightning:buttonIcon iconName="utility:table" onclick="{!c.onTableView}" />
+                    <lightning:buttonIcon iconName="utility:location" onclick="{!c.onMapView}" />
+                </lightning:buttonGroup>
+
+                <p>Action bar goes here!</p>
+
+            </div>
+
+        </div>
+    </div>
+
+</aura:component>
