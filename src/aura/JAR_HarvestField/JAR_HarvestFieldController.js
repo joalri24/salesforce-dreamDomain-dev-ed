@@ -20,20 +20,33 @@
 
 
 	recordUpdatedHandler : function(component, event, helper) {
-		
+		var changeType = event.getParams().changeType;
+		if(changeType === "CHANGED"){
+			var service = component.find("service");
+			service.reloadRecord();
+		}
 	},
 
 
 	navigateToRecordHome: function(component, event, helper){
-		
+		var navEvt = $A.get("e.force:navigateToSObject");
+		navEvt.setParams({
+			"recordId" : component.get("v.recordId"),
+			"slideDevName": "detail"
+		});
+		navEvt.fire();
 	},
 
 	toggleChangeHandler: function(component, event, helper){
-		
+		var service = component.find("service");
+		service.saveRecord(result => {});
 	},
 	
 	recordChangeHandler: function(component, event, helper){
-		console.log("SObject received!");
+		var id = event.getParam("recordId");
+		component.set("v.recordId", id);
+		var service = component.find("service");
+		service.reloadRecord();
 	}
 
 	

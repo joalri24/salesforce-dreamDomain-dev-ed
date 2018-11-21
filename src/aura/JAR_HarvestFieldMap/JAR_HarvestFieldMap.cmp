@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    
+<!-- ************** Attributes ************** -->
+
+
+<!-- ************** Event Handlers ************** -->
+
+
+<!-- ************** Registered events ************** -->
+
+
+<!-- ************** Body ************** -->
+	
+</aura:component>

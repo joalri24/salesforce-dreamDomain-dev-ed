@@ -1,7 +1,7 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" >
     
     <!-- ************** Attributes ************** -->
-    <aura:attribute name="recordId" type="Id" default="a031U000001JHCFQA4"/>
+    <aura:attribute name="recordId" type="Id" />
     <aura:attribute name="harvestField" type="Harvest_Field__c"/>
     <aura:attribute name="height" type="String" default="700px" access="global"/>
     <aura:attribute name="irrigationColumns" type="List"/>
@@ -38,13 +38,13 @@
                     <lightning:button label="Details" onclick="{!c.navigateToRecordHome}"/>
                 </aura:set>
 
-                <aura:if isTrue="{! true}">
+                <aura:if isTrue="{! equals(v.harvestField.Status__c, 'Alert')}">
                         <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
                         <h2>ALERT: Irrigation level below threshold</h2>
                     </div>
                 </aura:if>
 
-                <aura:if isTrue="{! true}">
+                <aura:if isTrue="{! equals(v.harvestField.Status__c, 'Warning')}">
                         <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert">
                         <h2>ALERT: Irrigation level below threshold</h2>
                     </div>
@@ -100,6 +100,12 @@
                 <img src="{!$Resource.purealoe + '/ground_' + v.harvestField.Status__c + '.png'}" class="ground" alt="status image" />
   
             </lightning:card>
+
+            <aura:set attribute="else">
+                <lightning:card class="placeholder-card">
+                    <div class="placeholder slds-text-heading_medium">Select a field to see details.</div>
+                </lightning:card>
+            </aura:set>
             
         </aura:if>
     </div>

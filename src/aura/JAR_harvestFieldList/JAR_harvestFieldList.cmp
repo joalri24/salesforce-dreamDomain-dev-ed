@@ -35,11 +35,11 @@
                     <lightning:buttonIcon iconName="utility:table" onclick="{!c.onTableView}" />
                     <lightning:buttonIcon iconName="utility:location" onclick="{!c.onMapView}" />
                 </lightning:buttonGroup>
-
-                <p>Action bar goes here!</p>
-
+   
             </div>
-
+            
+            <c:JAR_ActionBar />
+            
         </div>
     </div>
 
